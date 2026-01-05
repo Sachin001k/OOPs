@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Parking Lot System - A real-world system design example
@@ -140,14 +141,14 @@ public class ParkingLotSystem {
     
     // Ticket class
     static class Ticket {
-        private static int ticketCounter = 1;
+        private static AtomicInteger ticketCounter = new AtomicInteger(1);
         private String ticketId;
         private Vehicle vehicle;
         private ParkingSpot spot;
         private long entryTime;
         
         public Ticket(Vehicle vehicle, ParkingSpot spot) {
-            this.ticketId = "TICKET" + String.format("%04d", ticketCounter++);
+            this.ticketId = "TICKET" + String.format("%04d", ticketCounter.getAndIncrement());
             this.vehicle = vehicle;
             this.spot = spot;
             this.entryTime = System.currentTimeMillis();

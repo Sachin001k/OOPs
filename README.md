@@ -224,17 +224,21 @@ java -cp bin systemdesign.ParkingLotSystem
 java -cp bin systemdesign.ATMSystem
 ```
 
-### Alternative: Run without creating bin directory
+### Alternative: Run without pre-compiling
+
+You can also compile and run in one step (Java 11+):
 
 ```bash
 # From project root
 cd src/main/java
 
-# Run any example
+# Run any example (Java 11+ required)
 java oops/basics/Encapsulation.java
 java designpatterns/SingletonPattern.java
 java systemdesign/LibraryManagementSystem.java
 ```
+
+**Note:** The above single-command execution requires Java 11 or higher. For older Java versions, use the compilation and execution steps separately as shown in the previous sections.
 
 ## 📖 Learning Resources
 

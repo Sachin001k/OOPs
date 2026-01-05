@@ -6,6 +6,13 @@ import java.util.Map;
 /**
  * ATM System - A comprehensive system design example
  * Demonstrates: State pattern, Strategy pattern, and secure transaction handling
+ * 
+ * SECURITY NOTE: This is an educational example. In production systems:
+ * - PINs should be hashed with salt using bcrypt or similar
+ * - Use constant-time comparison for PIN validation
+ * - Implement rate limiting and account lockout after failed attempts
+ * - Add audit logging for all transactions
+ * - Use encryption for data transmission
  */
 public class ATMSystem {
     
