@@ -181,9 +181,8 @@ public class ParkingLotSystem {
         public ParkingSpot getSpot() { return spot; }
     }
     
-    // ParkingLot class (Singleton)
+    // ParkingLot class (Singleton - Bill Pugh implementation)
     static class ParkingLot {
-        private static ParkingLot instance;
         private List<ParkingLevel> levels;
         private Map<String, Ticket> activeTickets;
         
@@ -192,11 +191,12 @@ public class ParkingLotSystem {
             activeTickets = new HashMap<>();
         }
         
+        private static class ParkingLotHelper {
+            private static final ParkingLot INSTANCE = new ParkingLot();
+        }
+        
         public static ParkingLot getInstance() {
-            if (instance == null) {
-                instance = new ParkingLot();
-            }
-            return instance;
+            return ParkingLotHelper.INSTANCE;
         }
         
         public void addLevel(ParkingLevel level) {

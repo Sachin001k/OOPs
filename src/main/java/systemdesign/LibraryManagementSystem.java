@@ -118,9 +118,8 @@ public class LibraryManagementSystem {
         }
     }
     
-    // Library class (Singleton pattern)
+    // Library class (Singleton pattern - Bill Pugh implementation)
     static class Library {
-        private static Library instance;
         private Map<String, Book> books;
         private Map<String, Member> members;
         private List<Librarian> librarians;
@@ -131,11 +130,12 @@ public class LibraryManagementSystem {
             librarians = new ArrayList<>();
         }
         
+        private static class LibraryHelper {
+            private static final Library INSTANCE = new Library();
+        }
+        
         public static Library getInstance() {
-            if (instance == null) {
-                instance = new Library();
-            }
-            return instance;
+            return LibraryHelper.INSTANCE;
         }
         
         public void addBook(Book book) {
